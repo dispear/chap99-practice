@@ -21,6 +21,8 @@ public class ProductService {
 
         List<ProductDTO> productList = productDAO.selectAllProductList();
 
+        sqlSession.close();
+
         return productList;
     }
 
@@ -31,8 +33,9 @@ public class ProductService {
 
         List<ProductDTO> productList = productDAO.selectProductByCondition(searchCondition);
 
-        return productList;
+        sqlSession.close();
 
+        return productList;
     }
 
     public boolean registNewProduct(ProductDTO product) {
@@ -48,8 +51,9 @@ public class ProductService {
             sqlSession.rollback();
         }
 
-        return result > 0;
+        sqlSession.close();
 
+        return result > 0;
     }
 
     public boolean modifyProductInfo(ProductDTO product) {
@@ -64,6 +68,8 @@ public class ProductService {
         }else {
             sqlSession.rollback();
         }
+
+        sqlSession.close();
 
         return result > 0;
     }
@@ -81,7 +87,8 @@ public class ProductService {
             sqlSession.rollback();
         }
 
-        return result > 0;
+        sqlSession.close();
 
+        return result > 0;
     }
 }
