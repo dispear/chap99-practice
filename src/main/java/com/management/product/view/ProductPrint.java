@@ -8,11 +8,13 @@ import java.util.List;
 public class ProductPrint {
 
     public void printAllProductList(List<ProductDTO> productList) {
+        System.out.println("====== All Product List ======");
         productList.forEach(System.out::println);
     }
 
     public void printProductList(List<ProductDTO> productList, SearchCondition searchCondition) {
-        System.out.println(searchCondition.getOption());
+        System.out.println("====== Option Product List ======");
+        System.out.println("Option : " + searchCondition.getOption());
         productList.forEach(System.out::println);
     }
 
